@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bootstrap"
+        xmlns:core="clr-namespace:Partical.DrawCore"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                      VerticalScrollBarVisibility="Visible"
+                      x:Name="scroller01" >
+            <Grid>
+                <core:PageCanvas x:Name="pageBackground"/>
+                <core:PageCanvas x:Name="page01"/>
+            </Grid>
+            
+        </ScrollViewer>
+        <StackPanel Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Height" Value="26"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </StackPanel.Resources>
+            <UniformGrid Columns="2">
+                <RadioButton Tag="Left" Content="选中左" GroupName="canvas" IsChecked="True"/>
+                <RadioButton Tag="Right" Content="选中右" GroupName="canvas" IsChecked="False"/>
+            </UniformGrid>
+            <Button x:Name="local300X300"  Content="定位(300,300)"/>
+            <Button x:Name="lineRTtoLB79" Click="lineRTtoLB79_Click"  Content="右上左下79格"/>
+        </StackPanel>
     </Grid>
 </Window>
